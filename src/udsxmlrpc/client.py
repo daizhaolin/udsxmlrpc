@@ -6,8 +6,16 @@ Created on 2020-01-13
 '''
 
 import socket
-import http.client as httplib
-import xmlrpc.client as xmlrpclib
+
+try:
+    import httplib
+except ImportError:
+    import http.client as httplib
+
+try:
+    import xmlrpclib
+except ImportError:
+    import xmlrpc.client as xmlrpclib
 
 
 class UnixStreamHTTPConnection(httplib.HTTPConnection):
@@ -16,10 +24,10 @@ class UnixStreamHTTPConnection(httplib.HTTPConnection):
         self.sock.connect(self.host)
 
 
-class UnixStreamTransport(xmlrpclib.Transport):
+class UnixStreamTransport(xmlrpclib.Transport, object):
     def __init__(self, socketfile):
         self.socketfile = socketfile
-        super().__init__()
+        super(UnixStreamTransport, self).__init__()
 
     def make_connection(self, host):
         if self._connection and host == self._connection[0]:
@@ -28,10 +36,11 @@ class UnixStreamTransport(xmlrpclib.Transport):
         return self._connection[1]
 
 
-class UnixStreamXMLRPCClient(xmlrpclib.ServerProxy):
+class UnixStreamXMLRPCClient(xmlrpclib.ServerProxy, object):
     def __init__(self, socketfile):
-        super().__init__('http://',
-                         transport=UnixStreamTransport(socketfile))
+        super(UnixStreamXMLRPCClient,
+              self).__init__('http://',
+                             transport=UnixStreamTransport(socketfile))
 
 
 client = UnixStreamXMLRPCClient
