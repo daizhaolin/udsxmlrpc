@@ -5,9 +5,9 @@ Created on 2020-01-14
 @author: daizhaolin
 '''
 
-from udsxmlrpc import server
+from udsxmlrpc import Server
 
-s = server('/tmp/udsxmlprc.sock')
+s = Server('/tmp/udsxmlprc.sock')
 
 s.register_introspection_functions()
 s.register_function(pow)

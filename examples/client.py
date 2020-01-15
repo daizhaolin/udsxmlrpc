@@ -5,9 +5,9 @@ Created on 2020-01-14
 @author: daizhaolin
 '''
 
-from udsxmlrpc import client
+from udsxmlrpc import Client
 
-s = client('/tmp/udsxmlprc.sock')
+s = Client('/tmp/udsxmlprc.sock')
 
 print(s.pow(2, 3))
 print(s.add(2, 3))

@@ -53,4 +53,4 @@ class UnixStreamXMLRPCServer(socketserver.UnixStreamServer,
         socketserver.UnixStreamServer.__init__(self, addr, requestHandler, bind_and_activate)
 
 
-server = UnixStreamXMLRPCServer
+Server = UnixStreamXMLRPCServer

@@ -43,4 +43,4 @@ class UnixStreamXMLRPCClient(xmlrpclib.ServerProxy, object):
                              transport=UnixStreamTransport(socketfile))
 
 
-client = UnixStreamXMLRPCClient
+Client = UnixStreamXMLRPCClient
