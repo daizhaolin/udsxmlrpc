@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='udsxmlrpc',
-    version='0.1.5',
+    version='0.1.6',
     url='https://github.com/daizhaolin/udsxmlrpc',
     license='BSD',
     author='daizhaolin',
