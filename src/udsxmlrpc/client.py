@@ -37,12 +37,19 @@ class UnixStreamTransport(xmlrpclib.Transport, object):
 
 
 class UnixStreamXMLRPCClient(xmlrpclib.ServerProxy, object):
-    def __init__(self, socketfile,
-                 allow_none=False):
-        super(UnixStreamXMLRPCClient,
-              self).__init__('http://',
-                             transport=UnixStreamTransport(socketfile),
-                             allow_none=allow_none)
+    def __init__(self, uri, transport=None, encoding=None, verbose=False,
+                 allow_none=False, use_datetime=False, use_builtin_types=False,
+                 context=None):
+        try:
+            super(UnixStreamXMLRPCClient,
+                  self).__init__('http://', transport or UnixStreamTransport(uri), encoding, verbose,
+                                 allow_none, use_datetime, use_builtin_types,
+                                 context=context)
+        except TypeError:
+            super(UnixStreamXMLRPCClient,
+                  self).__init__('http://', transport or UnixStreamTransport(uri), encoding, verbose,
+                                 allow_none, use_datetime,
+                                 context=context)
 
 
 Client = UnixStreamXMLRPCClient

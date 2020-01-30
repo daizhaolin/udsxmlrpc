@@ -1,3 +1,10 @@
+0.1.5 (2020-01-30)
+------------------
+
+- Added transport, encoding, verbose,
+        use_datetime, use_builtin_types,
+        context parameter passing
+
 0.1.4 (2020-01-20)
 ------------------
 
