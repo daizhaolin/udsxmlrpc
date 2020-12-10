@@ -65,4 +65,10 @@ Client Simple Example
     10
     ['add', 'mul', 'pow', 'system.listMethods', 'system.methodHelp', 'system.methodSignature']
 
+Thanks
+------
+
+.. image:: PyCharm.svg
+    :target: http://jetbrains.com/?from=udsxmlrpc
+
 .. _pip: https://pip.pypa.io/en/stable/quickstart/
